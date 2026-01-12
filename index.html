@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logos">Decoraciones premium</div>  
+      <ul class="nav-links">
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#decoraciones">decoraciones</a></li>
+        <li><a href="#contacto">Contacto</a></li>        
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="hero">
+        <h1>Eventos Madelu</h1>
+        <p>Transforma tu dia especial con nuestras decoraciones exclusivas.</p>
+       <a href="#decoraciones">
+<button class="cta-button">Ver decoraciones</button>
+</a>
+    </section>
+
+    <section id="decoraciones">
+        <h2>Decoraciones Destacadas</h2>
+        <div class="decoraciones-grid">
+          <div class="decoraciones-card">
+            <img src="img/portada.jpg" alt="Decoracion de bautizo">
+            <h3>7mo anillo doble via la guardia</h3>
+            <p class="precio">750 Bs</p>
+            <p class="descripcion">Hermosa decoracion de bautizo</p>
+            <button>Ver Detalles</button>
+          </div>
+                    <div class="decoraciones-card">
+            <img src="img/imagen 4.jpg" alt="Decoracion de 15 Años">
+            <h3>Cupula de Quince Años</h3>
+            <p class="precio">1300 Bs</p>
+            <p class="descripcion">Hermosa decoracion para Quince Años</p>
+            <button>Ver Detalles</button>
+          </div>
+                    <div class="decoraciones-card">
+            <img src="img/imagen 3.jpg" alt="Decoracion de cumpleaños infantil">
+            <h3>Decoracion de cumpleaños infantil</h3>
+            <p class="precio">1300 Bs</p>
+            <p class="descripcion">Hermosa decoracion por cumpleaños de la pequeña Victoria</p>
+            <button>Ver Detalles</button>
+          </div>  
+        </div>
+    </section>
+
+    <section id = "contacto">
+        <h2>Contacto</h2>
+        <form id="contact-form" action="#" method="post">
+            <label for="nombre">Nombre</label>
+           <input id = "nombre" type="text" name="nombre" placeholder="Nombre" required>
+           <label for="email">Email</label>
+           <input id = "email" type="email" name="email" placeholder="Email" required>
+           <label for="mensaje">Mensaje</label>
+           <textarea id = "mensaje" name="mensaje" placeholder="Mensaje" required></textarea>
+           <button type="submit">Enviar</button>
+        </form>
+      <div id="form-msg"></div>
+    </section>
+  </main>
+
+  <footer>
+   <p>&copy; 2026 Decoraciones Madelu. Todos los derechos reservados.</p>
+
+  </footer>
+<script>
+  const form = document.getElementById('contact-form');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const nombre = document.getElementById('nombre').value;
+    const email = document.getElementById('email').value;
+    const mensaje = document.getElementById('mensaje').value;
+
+    const texto =
+      'Nombre: ' + nombre + '\n' +
+      'Email: ' + email + '\n' +
+      'Mensaje: ' + mensaje;
+
+    const url = 'https://wa.me/59164492115?text=' + encodeURIComponent(texto);
+
+    window.open(url, '_blank');
+    form.reset();
+  });
+</script>
+
+
+</body>
+</html>
