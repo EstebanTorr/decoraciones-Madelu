@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Decoraciones Madelu</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -31,24 +31,36 @@
         <div class="decoraciones-grid">
           <div class="decoraciones-card">
             <img src="img/portada.jpg" alt="Decoracion de bautizo">
-            <h3>7mo anillo doble via la guardia</h3>
+            <h3>Decoracion de bautizo</h3>
             <p class="precio">750 Bs</p>
             <p class="descripcion">Hermosa decoracion de bautizo</p>
-            <button>Ver Detalles</button>
+            <button class="ver-detalles" 
+            data-imgs="img/portada.jpg,img/portada 1_2.jpg,img/portada 1_3.jpg" 
+            data-title="Decoracion de bautizo " 
+            data-price="750 Bs" 
+            data-desc="Hermosa decoracion de bautizo, para el niño josue">Ver Detalles</button>
           </div>
-                    <div class="decoraciones-card">
+           <div class="decoraciones-card">
             <img src="img/imagen 4.jpg" alt="Decoracion de 15 Años">
-            <h3>Cupula de Quince Años</h3>
+            <h3>Decoracion de Quince Años</h3>
             <p class="precio">1300 Bs</p>
             <p class="descripcion">Hermosa decoracion para Quince Años</p>
-            <button>Ver Detalles</button>
+            <button class="ver-detalles" 
+            data-imgs="img/imagen 4.jpg,img/imagen 4_2.jpg,img/imagen 4_3.jpg" 
+            data-title="Decoracion de Quince Años" 
+            data-price="1300 Bs" 
+            data-desc="Hermosa decoracion para Quince Años">Ver Detalles</button>
           </div>
                     <div class="decoraciones-card">
             <img src="img/imagen 3.jpg" alt="Decoracion de cumpleaños infantil">
             <h3>Decoracion de cumpleaños infantil</h3>
             <p class="precio">1300 Bs</p>
             <p class="descripcion">Hermosa decoracion por cumpleaños de la pequeña Victoria</p>
-            <button>Ver Detalles</button>
+            <button class="ver-detalles" 
+            data-imgs="img/imagen 3.jpg,img/imagen 3_2.jpg,img/imagen 3_3.jpg" 
+            data-title="Decoracion de cumpleaños infantil" 
+            data-price="1300 Bs" 
+            data-desc="Hermosa decoracion por cumpleaños de la pequeña Victoria">Ver Detalles</button>
           </div>  
         </div>
     </section>
@@ -72,6 +84,15 @@
    <p>&copy; 2026 Decoraciones Madelu. Todos los derechos reservados.</p>
 
   </footer>
+  <div id="modal" class="modal"> 
+    <div class="modal-content"> 
+    <span id="close-modal">X</span> 
+    <div id="modal-images"></div>
+    <h3 id="modal-title"></h3> 
+    <p id="modal-price"></p> 
+    <p id="modal-desc"></p> 
+</div> 
+</div>
 <script>
   const form = document.getElementById('contact-form');
 
@@ -93,6 +114,42 @@
     form.reset();
   });
 </script>
+<script>
+  const botones = document.querySelectorAll('.ver-detalles');
+  const modal = document.getElementById('modal');
+
+  const modalImages = document.getElementById('modal-images');
+  const modalTitle = document.getElementById('modal-title');
+  const modalPrice = document.getElementById('modal-price');
+  const modalDesc = document.getElementById('modal-desc');
+
+  const cerrar = document.getElementById('close-modal');
+
+  botones.forEach(boton => {
+    boton.addEventListener('click', () => {
+      modalImages.innerHTML = '';
+
+      const imgs = boton.dataset.imgs.split(',');
+
+      imgs.forEach(src => {
+        const img = document.createElement('img');
+        img.src = src.trim();
+        modalImages.appendChild(img);
+      });
+
+      modalTitle.textContent = boton.dataset.title;
+      modalPrice.textContent = boton.dataset.price;
+      modalDesc.textContent = boton.dataset.desc;
+
+      modal.style.display = 'flex';
+    });
+  });
+
+  cerrar.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+</script>
+
 
 
 </body>
